@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  background-color: rgb(181, 227, 255);
+}
+
+.nav {
+  list-style: none;
+  display: block;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(77, 187, 255);
+  height: 50px;
+  text-align: center;
+  li {
+    display: inline-block;
+    padding: 15px;
+    color: white;
+  }
+  a {
+    color: rgb(235, 235, 235);
+    text-decoration: none;
+  }
+  a:hover {
+    color: white;
+  }
+}
+
+#container {
+  width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 10px;
+  height: 100%;
+}
+
+#progress-container {
+  display: block;
+  width: 100vw;
+}
+
+.student-name {
+  width: 200px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.progress-bar {
+  min-width: 5px;
+  background-color: green;
+  color: green;
+  display: inline-block;
+  margin: -2px;
+}

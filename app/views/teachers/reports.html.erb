@@ -1,0 +1,15 @@
+<h1>Report card for <%= @teacher.title %> <%= @teacher.name_last %>'s class.</h1>
+
+<% @students.each do |student| %>
+  <div id="progress-container">
+    <div class="student-name">
+      <%= link_to student_path(student.id) do %>
+        <%= student.name_first %> <%= student.name_last %>
+      <% end %>
+    </div>
+    <% progress = student.marks.length %>
+    <% progress.times do |n| %>
+      <div class="progress-bar">p</div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Lessons</h1>
+<% @lessons.each do |lesson| %>
+
+  <ul>
+    <li>Lesson Number: <%= link_to lesson.lesson_number, lesson %> (<%= lesson.parts %> parts)</li>
+  </ul>
+
+<% end %>

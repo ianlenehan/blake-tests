@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blake Lessons</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav>
+    <ul class="nav">
+      <li>
+        <%= link_to 'Teachers', root_path %>
+      </li>
+      <li>
+        <%= link_to 'Students', students_path %>
+      </li>
+      <li>
+        <%= link_to 'Lessons', lessons_path %>
+      </li>
+    </ul>
+  </nav>
+
+<div id="container">
+  <%= yield %>
+</div>
+
+</body>
+</html>

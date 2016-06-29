@@ -1,0 +1,36 @@
+<h1><%= @student.name_first%> <%= @student.name_last %></h1>
+<p>Teacher:
+  <%= link_to teacher_path(@student.teacher.id) do %>
+    <%= @student.teacher.title %> <%= @student.teacher.name_last %></p>
+  <% end %>
+</p>
+
+<h3>Current Lesson</h3>
+
+<% if @student.current_lesson == 101 %>
+  <p><%= @student.name_first %> has now graduated!</p>
+<% else %>
+
+  Lesson <%= @student.current_lesson %> Part <%= @student.current_part %>
+
+  <%= form_for(@mark = Mark.new) do |f| %>
+    <p><%= f.label :mark %> <%= f.text_field :mark, :required => true %></p>
+    <%= f.hidden_field :student_id, :value => @student.id %>
+    <%= f.hidden_field :lesson_id, :value => @student.current_lesson %>
+    <%= f.hidden_field :part, :value => @student.current_part %>
+    <%= f.submit "Record Progress" %>
+  <% end %>
+
+<% end %>
+
+
+<h3>Lessons Completed</h3>
+<% if @student.marks.exists? %>
+  <ul>
+    <% @student.marks.each do |mark| %>
+      <li>Lesson: <%= mark.lesson_id %> Part: <%= mark.part %> Mark: <%= mark.mark %>%
+    <% end %>
+  </ul>
+<% else %>
+  <p>No lessons completed yet.</p>
+<% end %>

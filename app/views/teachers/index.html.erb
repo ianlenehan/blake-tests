@@ -1,0 +1,8 @@
+<h1>Teachers</h1>
+<% @teachers.each do |teacher| %>
+
+  <%= link_to teacher_path(teacher.id) do %>
+    <p><%= teacher.title %> <%= teacher.name_last %></p>
+  <% end %>
+  
+<% end %>
