@@ -5,18 +5,18 @@ RSpec.describe StudentsController, type: :controller do
   describe 'GET to /students' do
 
     before do
-      student1 = Student.create
-      student2 = Student.create
+      Student.destroy_all
+      3.times { |i| Student.create :name_first => "Student #{ i }" }
       get :index
     end
 
-      it 'should respond with a status 200' do
-        expect(response.status).to eq(200)
-      end
+    it 'should respond with a status 200' do
+      expect(response.status).to eq(200)
+    end
 
       it 'should show us the students in an instance variable' do
+        expect(assigns(:students).length).to eq(3)
         expect(assigns(:students)).to be
-        expect(assigns(:students).length).to eq(2)
         expect(assigns(:students).first.class).to eq(Student)
       end
 
