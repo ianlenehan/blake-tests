@@ -40,19 +40,8 @@ RSpec.describe StudentsController, type: :controller do
 
     describe 'GET to /students/updatelesson/:id' do
 
-      # before do
-      #   lesson = Lesson.create
-      #   lesson.parts = 3
-      #   lesson.lesson_number = 1
-      #   lesson.save
-      #   student = Student.create
-      #   student.current_part = 1
-      #   student.current_lesson = lesson.lesson_number
-      #   student.save
-      #   get :update_lesson, :id => student.id
-      # end
-
-      it 'should change the part number by 1' do
+      before do
+        Student.destroy_all
         lesson = Lesson.create
         lesson.parts = 3
         lesson.lesson_number = 1
@@ -62,9 +51,10 @@ RSpec.describe StudentsController, type: :controller do
         student.current_lesson = lesson.lesson_number
         student.save
         get :update_lesson, :id => student.id
+      end
 
-        expect(student.current_part).to eq(2)
-
+      it 'should increase the part number by 1' do
+        expect(Student.last.current_part).to eq(2)
       end
 
     end
