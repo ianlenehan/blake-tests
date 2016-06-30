@@ -15,11 +15,14 @@ class StudentsController < ApplicationController
 
   def update_lesson
     student = Student.find params[:id]
-    lesson = Lesson.find(student.current_lesson)
+    current_lesson = student.current_lesson
+    lesson = Lesson.where(:lesson_number == current_lesson).first
     if student.current_part == lesson.parts
+      p "first"
       student.current_lesson += 1
       student.current_part = 1
     else
+      p "second"
       student.current_part += 1
     end
     student.save
